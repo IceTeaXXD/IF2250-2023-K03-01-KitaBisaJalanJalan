@@ -4,9 +4,9 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
 
-class MainWindow(QDialog):
+class HomeWindow(QDialog):
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super(HomeWindow, self).__init__()
         loadUi("src/interface/ui/home.ui", self)
 
     def showEvent(self, event): # This is called when the window is shown
