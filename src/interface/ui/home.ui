@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Home</class>
+ <widget class="QDialog" name="Home">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1512</width>
+    <height>982</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Inter</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background-image: url(&quot;img/home/home.png&quot;);
+background-repeat: none;
+}</string>
+  </property>
+  <widget class="QFrame" name="buttons">
+   <property name="geometry">
+    <rect>
+     <x>845</x>
+     <y>255</y>
+     <width>581</width>
+     <height>821</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="button_baru">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>540</width>
+      <height>122</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Inter</family>
+      <pointsize>32</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: rgba(3, 239, 98, 1);
+border-radius: 15px;
+color: rgba(255,255,255,1);
+}
+
+QPushButton:hover {
+    background-color: rgba(3, 239, 98, 0.8);
+}
+
+QPushButton:pressed {
+    background-color: rgba(3, 239, 98, 0.6);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Baru</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_sedangberlangsung">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>175</y>
+      <width>544</width>
+      <height>122</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Inter</family>
+      <pointsize>28</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #00ff00; /* green color */
+    border-radius: 15px;
+    color: white;
+}
+
+QPushButton:hover {
+    background-color: rgba(3, 239, 98, 0.8);
+}
+
+QPushButton:pressed {
+    background-color: rgba(3, 239, 98, 0.6);
+}</string>
+    </property>
+    <property name="text">
+     <string>Sedang Berlangsung</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_riwayat">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>350</y>
+      <width>544</width>
+      <height>122</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Inter</family>
+      <pointsize>32</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #FFFFFF; /* white color */
+    border-radius: 15px;
+    color: white;
+}
+
+QPushButton:hover {
+    background-color: rgba(3, 239, 98, 0.8);
+}
+
+QPushButton:pressed {
+    background-color: rgba(3, 239, 98, 0.6);
+}</string>
+    </property>
+    <property name="text">
+     <string>Riwayat</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="text">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>430</y>
+     <width>640</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame{
+background: url(&quot;img/home/text.png&quot;);
+background-repeat: none;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../Assets/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
