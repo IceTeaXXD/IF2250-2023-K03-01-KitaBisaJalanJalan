@@ -1,5 +1,7 @@
 <RCC>
   <qresource>
+    <file>../../../img/pilihDaerah/submit.png</file>
+    <file>../../../img/pilihDaerah/submit.png</file>
     <file>../../../img/sedangBerlangsung/destinasi.png</file>
     <file>../../../img/sedangBerlangsung/depan.png</file>
     <file>../../../img/sedangBerlangsung/belakang.png</file>

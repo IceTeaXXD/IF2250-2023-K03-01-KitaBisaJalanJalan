@@ -46,6 +46,8 @@ class MainApplication(QApplication):
         self.perkiraanBiayaTransportasi.next_button.clicked.connect(self.perkiraanBiayaTransportasi_next_button_clicked)
         self.riwayatPerjalanan.back_button.clicked.connect(self.riwayatPerjalanan_back_button_clicked)
         self.catatan.back_button.clicked.connect(self.back_button_clicked)  
+        self.pilihTanggalPerjalanan.back_button.clicked.connect(self.pilihTanggalPerjalanan_back_button_clicked)
+        self.pilihTanggalPerjalanan.submit.clicked.connect(self.submit_clicked)
         self.sedangBerlangsung.back_button.clicked.connect(self.sedangBerlangsung_back_button_clicked)
         self.home.button_riwayat.clicked.connect(self.button_riwayat_clicked)
         self.home.button_sedangberlangsung.clicked.connect(self.sedangberlangsung_clicked)
@@ -73,6 +75,10 @@ class MainApplication(QApplication):
     def riwayatPerjalanan_back_button_clicked(self):
         self.widget.setCurrentWidget(self.home)
     def back_button_clicked(self):
+        self.widget.setCurrentWidget(self.home)
+    def pilihTanggalPerjalanan_back_button_clicked(self):
+        self.widget.setCurrentWidget(self.perkiraanBiayaTransportasi)
+    def submit_clicked(self):
         self.widget.setCurrentWidget(self.home)
 
 run = MainApplication(sys.argv)

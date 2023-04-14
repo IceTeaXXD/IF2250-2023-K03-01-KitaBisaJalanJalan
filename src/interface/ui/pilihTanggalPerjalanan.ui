@@ -234,7 +234,7 @@ background-repeat: none;</string>
     <string>Pilih Tanggal Perjalanan Kamu</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton">
+  <widget class="QToolButton" name="back_button">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -281,17 +281,17 @@ color : black;
 border-radius: 100%;</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton_2">
+  <widget class="QToolButton" name="submit">
    <property name="geometry">
     <rect>
-     <x>1360</x>
-     <y>770</y>
-     <width>131</width>
-     <height>161</height>
+     <x>1310</x>
+     <y>810</y>
+     <width>181</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image:url(:/img/pilihDaerah/next.png);
+    <string notr="true">background-image:url(:/img/pilihDaerah/submit.png);
 background-repeat : none;
 background-color : transparent;</string>
    </property>
@@ -410,9 +410,9 @@ background-color : transparent;</string>
   <zorder>label</zorder>
   <zorder>label_2</zorder>
   <zorder>label_3</zorder>
-  <zorder>toolButton</zorder>
+  <zorder>back_button</zorder>
   <zorder>calendarWidget</zorder>
-  <zorder>toolButton_2</zorder>
+  <zorder>submit</zorder>
  </widget>
  <resources>
   <include location="image.qrc"/>
