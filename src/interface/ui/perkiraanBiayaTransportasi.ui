@@ -959,6 +959,24 @@ p, li { white-space: pre-wrap; }
     <string/>
    </property>
   </widget>
+  <widget class="QToolButton" name="next_button">
+   <property name="geometry">
+    <rect>
+     <x>1370</x>
+     <y>750</y>
+     <width>131</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image:url(:/img/pilihDaerah/next.png);
+background-repeat : none;
+background-color : transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>label_14</zorder>
   <zorder>label</zorder>
   <zorder>label_2</zorder>
@@ -983,6 +1001,7 @@ p, li { white-space: pre-wrap; }
   <zorder>label_12</zorder>
   <zorder>line</zorder>
   <zorder>textBrowser</zorder>
+  <zorder>next_button</zorder>
  </widget>
  <resources>
   <include location="image.qrc"/>
