@@ -18,14 +18,14 @@ class MainApplication(QApplication):
         self.widget.setFixedWidth(1512)
         self.widget.setFixedHeight(982)
         self.widget.show()
-        # self.home.button_baru.clicked.connect(self.button_baru_clicked)
-        # self.catatan.back_button.clicked.connect(self.back_button_clicked)
+        self.home.button_baru.clicked.connect(self.button_baru_clicked)
+        self.catatan.back_button.clicked.connect(self.back_button_clicked)
 
-    # def button_baru_clicked(self):
-        # self.widget.setCurrentWidget(self.catatan)
+    def button_baru_clicked(self):
+        self.widget.setCurrentWidget(self.catatan)
 
-    # def back_button_clicked(self):
-        # self.widget.setCurrentWidget(self.home)
+    def back_button_clicked(self):
+        self.widget.setCurrentWidget(self.home)
 
 run = MainApplication(sys.argv)
 sys.exit(run.exec_())
