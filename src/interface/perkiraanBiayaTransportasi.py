@@ -4,7 +4,8 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
 
-class perkiraanBiayaTransportasiWindow(QDialog):
+class PerkiraanBiayaTransportasiWindow(QDialog):
     def __init__(self):
-        super(perkiraanBiayaTransportasiWindow, self).__init__()
-        loadUi("src/interface/ui/perkiraanBiayaTransportasi.ui")
+        super(PerkiraanBiayaTransportasiWindow, self).__init__()
+        loadUi("src/interface/ui/perkiraanBiayaTransportasi.ui", self)
+        self.show()

@@ -7,4 +7,5 @@ from PyQt5.QtCore import *
 class riwayatPerjalananWindow(QDialog):
     def __init__(self):
         super(riwayatPerjalananWindow, self).__init__()
-        loadUi("src/interface/ui/riwayatPerjalanan.ui")
+        loadUi("src/interface/ui/riwayatPerjalanan.ui", self)
+        self.show()
