@@ -1,0 +1,12 @@
+<RCC>
+  <qresource>
+    <file>../../../img/biayaTransport/People in Car.png</file>
+    <file>../../../img/biayaTransport/Bus.png</file>
+    <file>../../../img/biayaTransport/Plane.png</file>
+    <file>../../../img/biayaTransport/Train.png</file>
+    <file>../../../img/pilihDaerah/Group 61.png</file>
+    <file>../../../img/logo/logo.png</file>
+    <file>../../../img/pilihDaerah/back.png</file>
+    <file>../../../img/pilihDaerah/next.png</file>
+  </qresource>
+</RCC>
