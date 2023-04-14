@@ -7,7 +7,7 @@ from PyQt5.QtCore import *
 class HomeWindow(QDialog):
     def __init__(self):
         super(HomeWindow, self).__init__()
-        loadUi("src/interface/ui/home.ui", self)
+        loadUi("./interface/ui/home.ui", self)
 
     def showEvent(self, event): # This is called when the window is shown
         # Animate the frames to slide in

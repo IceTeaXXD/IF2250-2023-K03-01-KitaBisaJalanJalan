@@ -7,5 +7,5 @@ from PyQt5.QtCore import *
 class PerkiraanBiayaTransportasiWindow(QDialog):
     def __init__(self):
         super(PerkiraanBiayaTransportasiWindow, self).__init__()
-        loadUi("src/interface/ui/perkiraanBiayaTransportasi.ui", self)
+        loadUi("./interface/ui/perkiraanBiayaTransportasi.ui", self)
         self.show()

@@ -7,4 +7,4 @@ from PyQt5.QtCore import *
 class CatatanWindow(QDialog):
     def __init__(self):
         super(CatatanWindow, self).__init__()
-        loadUi("src/interface/ui/catatan.ui", self)
+        loadUi("./interface/ui/catatan.ui", self)

@@ -7,5 +7,5 @@ from PyQt5.QtCore import *
 class pilihDestinasiWindow(QDialog):
     def __init__(self):
         super(pilihDestinasiWindow, self).__init__()
-        loadUi("src/interface/ui/pilihDestinasi.ui", self)
+        loadUi("./interface/ui/pilihDestinasi.ui", self)
         self.show()

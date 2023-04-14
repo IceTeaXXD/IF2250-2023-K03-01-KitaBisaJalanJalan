@@ -20,7 +20,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{
-background-image: url(&quot;img/home/home.png&quot;);
+background-image: url(&quot;../img/home/home.png&quot;);
 background-repeat: none;
 }</string>
   </property>
@@ -178,7 +178,7 @@ QPushButton:pressed {
    </property>
    <property name="styleSheet">
     <string notr="true">QFrame{
-background: url(&quot;img/home/text.png&quot;);
+background: url(&quot;../img/home/text.png&quot;);
 background-repeat: none;
 }</string>
    </property>

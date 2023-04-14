@@ -4,27 +4,27 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
 
-import home as home
-import catatan as catatan
-import pilihDaerah as pilihDaerah
-import pilihDestinasi as pilihDestinasi
-import riwayatPerjalanan as riwayatPerjalanan
-import perkiraanBiayaTransportasi as perkiraanBiayaTransportasi
-import sedangBerlangsung as sedangBerlangsung
-import pilihTanggalPerjalanan as pilihTanggalPerjalanan
-import image
+from .home import *
+from .catatan import *
+from .pilihDaerah import *
+from .pilihDestinasi import *
+from .riwayatPerjalanan import *
+from .perkiraanBiayaTransportasi import *
+from .sedangBerlangsung import *
+from .pilihTanggalPerjalanan import *
+from .image import *
 
 class MainApplication(QApplication):
     def __init__(self, argv):
         super(MainApplication, self).__init__(argv)
-        self.home = home.HomeWindow()
-        self.catatan = catatan.CatatanWindow()
-        self.pilihDaerah = pilihDaerah.pilihDaerahWindow()
-        self.pilihDestinasi = pilihDestinasi.pilihDestinasiWindow()
-        self.riwayatPerjalanan = riwayatPerjalanan.riwayatPerjalananWindow()
-        self.perkiraanBiayaTransportasi = perkiraanBiayaTransportasi.PerkiraanBiayaTransportasiWindow()
-        self.sedangBerlangsung = sedangBerlangsung.sedangBerlangsungWindow()
-        self.pilihTanggalPerjalanan = pilihTanggalPerjalanan.pilihTanggalPerjalananWindow()
+        self.home = HomeWindow()
+        self.catatan = CatatanWindow()
+        self.pilihDaerah = pilihDaerahWindow()
+        self.pilihDestinasi = pilihDestinasiWindow()
+        self.riwayatPerjalanan = riwayatPerjalananWindow()
+        self.perkiraanBiayaTransportasi = PerkiraanBiayaTransportasiWindow()
+        self.sedangBerlangsung = sedangBerlangsungWindow()
+        self.pilihTanggalPerjalanan = pilihTanggalPerjalananWindow()
         self.widget = QtWidgets.QStackedWidget()
         self.widget.addWidget(self.home)
         self.widget.addWidget(self.catatan)
@@ -81,5 +81,5 @@ class MainApplication(QApplication):
     def submit_clicked(self):
         self.widget.setCurrentWidget(self.home)
 
-run = MainApplication(sys.argv)
-sys.exit(run.exec_())
+# run = MainApplication(sys.argv)
+# sys.exit(run.exec_())

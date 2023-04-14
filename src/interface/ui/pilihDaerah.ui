@@ -240,22 +240,7 @@ background-repeat: none;</string>
    </property>
    <item>
     <property name="text">
-     <string>Area 1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Area 2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Area 3</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Area 4</string>
+     <string>-- PILIH DAERAH --</string>
     </property>
    </item>
   </widget>
