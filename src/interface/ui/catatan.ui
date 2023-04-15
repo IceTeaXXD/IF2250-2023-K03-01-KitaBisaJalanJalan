@@ -117,25 +117,6 @@ color: #FFFFFF;
     <string>JAN</string>
    </property>
   </widget>
-  <widget class="QLabel" name="destinasi_x">
-   <property name="geometry">
-    <rect>
-     <x>112</x>
-     <y>231</y>
-     <width>459</width>
-     <height>520</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel{
-background-image:url(&quot;../img/catatan/destinasi_box.png&quot;);
-background-repeat:none;
-}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="destinasi_box">
    <property name="enabled">
     <bool>true</bool>
