@@ -9,6 +9,9 @@ class pilihDaerahWindow(QDialog):
     def __init__(self):
         super(pilihDaerahWindow, self).__init__()
         loadUi("./interface/ui/pilihDaerah.ui", self)
-        daerahwisata = BoundaryDaerahWisata()
-        for d in daerahwisata.getListDaerah():
+        self.daerahwisata = BoundaryDaerahWisata()
+        for d in self.daerahwisata.getListDaerah():
             self.dropdown.addItem(d.getNama(), d.getID())
+
+    def selectedID(self):
+        return self.dropdown.currentData()

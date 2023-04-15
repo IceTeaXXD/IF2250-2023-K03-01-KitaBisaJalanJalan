@@ -5,9 +5,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-import sys
 
-arr_of_destinasi = ['Destinasi 1', 'Destinasi 2', 'Destinasi 3', 'Destinasi 4', 'Destinasi 5', 'Destinasi 6', 'Destinasi 7', 'Destinasi 8', 'Destinasi 9', 'Destinasi 10', 'Destinasi 11', 'Destinasi 12', 'Destinasi 13', 'Destinasi 14', 'Destinasi 15', 'Destinasi 16', 'de','de','de','de','de']
 
 class pilihDestinasiWindow(QDialog):
     def __init__(self):
@@ -26,10 +24,10 @@ class pilihDestinasiWindow(QDialog):
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.gridLayout = QGridLayout(self.scrollAreaWidgetContents)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        
         self.horizontalLayout.addWidget(self.scrollArea)
         
-        for i in range(len(arr_of_destinasi)):
+    def setDaerah(self, ListDestinasi):
+        for i in range(len(ListDestinasi)):
             self.container = QLabel()
             # set size of container
             self.container.setFixedSize(300, 340)
@@ -42,7 +40,7 @@ class pilihDestinasiWindow(QDialog):
             # make decoration to be top of container with no margin
             decoration.setAlignment(Qt.AlignTop)
             # make a title
-            title = QLabel(arr_of_destinasi[i])
+            title = QLabel(ListDestinasi[i][1])
             # set font size to 20 with font inter
             title.setStyleSheet("font-size: 32px; font-family: Inter; color: #000000;font-weight: 600;")
             # make a checkbox
@@ -91,12 +89,22 @@ class pilihDestinasiWindow(QDialog):
             # checkbox.setContentsMargins(10,100,100,100)
             decoration.setContentsMargins(0, -10, 0, 0)
             self.gridLayout.addWidget(self.container, 0, i, 1, 1)
-        
+    
+    def getCheckedVal(self) -> list:
+        checked = []
+        box_arr = self.scrollAreaWidgetContents.findChildren(QCheckBox, '', Qt.FindChildrenRecursively)
+        for i in range(len(box_arr)):
+            if (box_arr[i].isChecked()):
+                checked.append(i)
+        return checked
+    
+    def reset(self):
+        for i in reversed(range(self.gridLayout.count())): 
+            self.gridLayout.itemAt(i).widget().setParent(None)
+    
 # main function
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = pilihDestinasiWindow()
     window.show()
     sys.exit(app.exec_())
-
-

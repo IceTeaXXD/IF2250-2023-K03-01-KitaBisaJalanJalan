@@ -64,6 +64,17 @@ class MainApplication(QApplication):
         self.widget.setCurrentWidget(self.pilihDaerah)
 
     def pilihDaerah_next_button_clicked(self):
+        if self.pilihDaerah.selectedID() == None:
+            # error dialog box
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText("Daerah Belum Dipilih!")
+            msg.setWindowTitle("Error")
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.exec_()
+            return
+        self.pilihDestinasi.reset()
+        self.pilihDestinasi.setDaerah(self.pilihDaerah.daerahwisata.getDaerah(self.pilihDaerah.selectedID()).getListDestinasiFromDaerah())
         self.widget.setCurrentWidget(self.pilihDestinasi)
 
     def pilihDaerah_back_button_clicked(self):
@@ -73,6 +84,16 @@ class MainApplication(QApplication):
         self.widget.setCurrentWidget(self.pilihDaerah)
 
     def pilihDestinasinext_button_clicked(self):
+        checked = self.pilihDestinasi.getCheckedVal()
+        if (len(checked) == 0):
+            # error dialog box
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText("Destinasi Belum Dipilih!")
+            msg.setWindowTitle("Error")
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.exec_()
+            return
         self.widget.setCurrentWidget(self.perkiraanBiayaTransportasi)
 
     def perkiraanBiayaTransportasi_back_button_clicked(self):
