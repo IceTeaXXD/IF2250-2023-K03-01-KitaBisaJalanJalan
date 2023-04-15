@@ -101,5 +101,8 @@ class MainApplication(QApplication):
 
     def submit_clicked(self):
         start_date, end_date = self.pilihTanggalPerjalanan.getDateSelected()
-        print(start_date, "to", end_date)
+        if end_date is None:
+            print(start_date)
+        else:
+            print(start_date, "to", end_date)
         self.widget.setCurrentWidget(self.home)

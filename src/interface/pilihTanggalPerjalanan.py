@@ -10,7 +10,7 @@ class pilihTanggalPerjalananWindow(QDialog):
         super(pilihTanggalPerjalananWindow, self).__init__()
         loadUi("./interface/ui/pilihTanggalPerjalanan.ui", self)
 
-        self.from_date = None
+        self.from_date = self.calendarWidget.selectedDate()
         self.to_date = None
 
         self.highlighter = QTextCharFormat()
@@ -39,4 +39,7 @@ class pilihTanggalPerjalananWindow(QDialog):
 
     def getDateSelected(self):
         # return the selected date in DD/MM/YYYY format
-        return self.from_date.toString("dd/MM/yyyy"), self.to_date.toString("dd/MM/yyyy")
+        if self.from_date and self.to_date:
+            return self.from_date.toString("dd/MM/yyyy"), self.to_date.toString("dd/MM/yyyy")
+        else:
+            return self.from_date.toString("dd/MM/yyyy"), None
