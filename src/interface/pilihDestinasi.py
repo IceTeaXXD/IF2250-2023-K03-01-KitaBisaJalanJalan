@@ -40,7 +40,7 @@ class pilihDestinasiWindow(QDialog):
             # make decoration to be top of container with no margin
             decoration.setAlignment(Qt.AlignTop)
             # make a title
-            title = QLabel(ListDestinasi[i][1])
+            title = QLabel(ListDestinasi[i].getNamaDestinasi())
             # set font size to 20 with font inter
             title.setStyleSheet("font-size: 32px; font-family: Inter; color: #000000;font-weight: 600;")
             # make a checkbox
@@ -64,7 +64,7 @@ class pilihDestinasiWindow(QDialog):
             scroll_area.setFrameShape(QtWidgets.QFrame.NoFrame)
             scroll_area.setStyleSheet("background-color: transparent;")
             
-            desc = QLabel(ListDestinasi[i][4])
+            desc = QLabel(ListDestinasi[i].getDeskripsi())
             # set font size to 14 with font inter
             desc.setStyleSheet("font-size: 14px; font-family: Inter; color: #000000;")
             # desc.setFixedHeight(100)
@@ -95,9 +95,18 @@ class pilihDestinasiWindow(QDialog):
         box_arr = self.scrollAreaWidgetContents.findChildren(QCheckBox, '', Qt.FindChildrenRecursively)
         for i in range(len(box_arr)):
             if (box_arr[i].isChecked()):
-                checked.append(i)
+                checked.append(i+1)
         return checked
     
+    def getNameChecked(self) -> list:
+        # get the title of the checked box
+        checked = []
+        box_arr = self.scrollAreaWidgetContents.findChildren(QCheckBox, '', Qt.FindChildrenRecursively)
+        for i in range(len(box_arr)):
+            if (box_arr[i].isChecked()):
+                checked.append(box_arr[i].parent().findChildren(QLabel, '', Qt.FindChildrenRecursively)[1].text())
+        return checked
+
     def reset(self):
         for i in reversed(range(self.gridLayout.count())): 
             self.gridLayout.itemAt(i).widget().setParent(None)

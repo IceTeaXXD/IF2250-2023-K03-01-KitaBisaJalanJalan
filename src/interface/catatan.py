@@ -8,3 +8,6 @@ class CatatanWindow(QDialog):
     def __init__(self):
         super(CatatanWindow, self).__init__()
         loadUi("./interface/ui/catatan.ui", self)
+
+    def setDestinasi(self, destinasi):
+        self.destinasi_box.setText(destinasi)
