@@ -414,6 +414,9 @@ background-color : transparent;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="autoRaise">
+    <bool>true</bool>
+   </property>
   </widget>
   <zorder>label_4</zorder>
   <zorder>label</zorder>
