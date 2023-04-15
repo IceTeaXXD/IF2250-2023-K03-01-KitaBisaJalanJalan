@@ -243,6 +243,9 @@ background-repeat: none;</string>
      <height>161</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-image:url(:/img/pilihDaerah/back.png);
 background-repeat : none;
@@ -250,6 +253,9 @@ background-color : transparent;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="autoRaise">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QCalendarWidget" name="calendarWidget">
@@ -290,6 +296,9 @@ border-radius: 100%;</string>
      <height>81</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-image:url(:/img/pilihDaerah/submit.png);
 background-repeat : none;
@@ -297,6 +306,9 @@ background-color : transparent;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="autoRaise">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">

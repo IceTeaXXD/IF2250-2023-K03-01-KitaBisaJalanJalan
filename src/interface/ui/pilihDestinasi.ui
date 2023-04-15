@@ -238,6 +238,9 @@ background-repeat: none;</string>
      <height>161</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-image:url(:/img/pilihDaerah/back.png);
 background-repeat : none;
@@ -245,6 +248,9 @@ background-color : transparent;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="autoRaise">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -281,6 +287,9 @@ background-color : transparent;</string>
      <height>161</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-image:url(:/img/pilihDaerah/next.png);
 background-repeat : none;
@@ -288,6 +297,9 @@ background-color : transparent;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="autoRaise">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
