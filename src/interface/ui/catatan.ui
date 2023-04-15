@@ -249,7 +249,30 @@ text-align: center;
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
+  <widget class="QToolButton" name="submit">
+   <property name="geometry">
+    <rect>
+     <x>1320</x>
+     <y>780</y>
+     <width>181</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image:url(:/img/pilihDaerah/submit.png);
+background-repeat : none;
+background-color : transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
  <connections/>
 </ui>
