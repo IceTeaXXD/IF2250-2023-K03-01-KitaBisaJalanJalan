@@ -68,7 +68,8 @@ def init_Database():
     create table IF NOT EXISTS transportPilihan(
         `ID_Riwayat` INTEGER,
         `ID_Transportasi` INTEGER,
-        PRIMARY KEY(`ID_Riwayat`, `ID_Transportasi`),
+        `Urutan` INTEGER,
+        PRIMARY KEY(`ID_Riwayat`, `ID_Transportasi`, `Urutan`),
         FOREIGN KEY (`ID_Riwayat`) REFERENCES riwayatperjalanan(`ID_riwayat`),
         FOREIGN KEY (`ID_Transportasi`) REFERENCES transportasi(`ID_Transportasi`)
     )
