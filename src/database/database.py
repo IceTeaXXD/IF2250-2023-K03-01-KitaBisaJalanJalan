@@ -104,10 +104,10 @@ def init_Database():
 
     q10 = """
     insert into transportasi values
-    (1, 'Mobil', 10000),
-    (2, 'Motor', 5000),
-    (3, 'Kereta', 50000),
-    (4, 'Pesawat', 1000000)
+    (3, 'Mobil', 10000),
+    (4, 'Bus', 5000),
+    (1, 'Kereta', 50000),
+    (2, 'Pesawat', 1000000)
     """
     with conn:
         c.execute(q1)

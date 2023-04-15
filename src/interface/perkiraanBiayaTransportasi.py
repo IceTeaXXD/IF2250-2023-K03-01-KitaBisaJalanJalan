@@ -5,9 +5,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QPixmap
 
-# from classes import ListTransportasi
-import image
-
+from classes.ListTransportasi import *
 
 arrray_of_destiansi = [['Destinasi 1',10000,20000,30000,40000],['Destinasi 2',16000,20000,30000,40000],['Destinasi 3',10090,20000,30000,40000]]
 class PerkiraanBiayaTransportasiWindow(QDialog):
@@ -15,26 +13,6 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
         super(PerkiraanBiayaTransportasiWindow, self).__init__()
         loadUi("./interface/ui/perkiraanBiayaTransportasi.ui", self)
 
-        # listTransport = ListTransportasi()
-
-        # # Menampilkan harga per transportasi
-        # for t in listTransport.getList():
-        #     if t.getNama() == "Kereta":
-        #         # Kasih Harganya
-        #         self.harga_kereta.setText(str(t.getHarga()))
-        #     elif (t.getNama() == "Mobil"):
-        #         # Kasih Harganya
-        #         self.harga_mobil.setText(str(t.getHarga()))
-        #     elif (t.getNama() == "Pesawat"):
-        #         # Kasih Harganya
-        #         self.harga_pesawat.setText(str(t.getHarga()))
-        #     else:
-        #         # Kasih Harganya
-        #         self.harga_bus.setText(str(t.getHarga()))
-        # Nanti buat tiap object radioButton
-        # dicek is set or not
-        # kalo is set, pass ID via getID()
-        # make a scroll area
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setContentsMargins(100, 250, 100, 300)
         self.scrollArea = QScrollArea(self)
@@ -46,8 +24,11 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
 
         self.verticalLayout.addWidget(self.scrollArea)
         self.setLayout(self.verticalLayout)
+
+        self.listTransportasi = ListTransportasi().getList()
         
-        for i in range(len(arrray_of_destiansi)):
+    def setDestinasi(self, ListDestinasiPilihan):
+        for i in range(len(ListDestinasiPilihan)):
             self.container = QLabel()
             self.container.setFixedSize(1200, 400)
             self.container.setStyleSheet("background-color: transparent; border-radius: 10px; margin-bottom : 20px")
@@ -65,7 +46,7 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
             decoration.setFixedSize(400, 40)
             decoration.setStyleSheet("background-color: #03EF62; border-radius: 10px;")
 
-            title = QLabel(arrray_of_destiansi[i][0])
+            title = QLabel(ListDestinasiPilihan[i].getNamaDestinasi())
             title.setStyleSheet("color: #000000; font-size: 32px; font-weight: bold;")
 
             line = QFrame()
@@ -80,13 +61,12 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
             scroll_area.setFrameShape(QtWidgets.QFrame.NoFrame)
             scroll_area.setStyleSheet("background-color: transparent;")
 
-            desc = QLabel("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+            desc = QLabel(ListDestinasiPilihan[i].getDeskripsi())
             desc.setStyleSheet("color: #000000; font-size: 16px;")
             desc.setWordWrap(True)
             desc.setMaximumHeight(600)
             desc.setContentsMargins(10, 0, 10, 10)
             scroll_area.setWidget(desc)
-
 
             left_box_layout = QVBoxLayout(left_box)
             left_box_layout.addWidget(decoration)
@@ -113,21 +93,17 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
 
             # radio button container
             radio_container = QLabel()
-            # radio_container.setStyleSheet("margin-right  : 100")
-            # radio_container.setFixedSize(1000, 200)
             radio_container.setFixedWidth(80)
-            # set spacing
-            
             
             # make a radio button
-            radio_kereta = QRadioButton()
-            # radio_kereta.setStyleSheet("margin-top:150px")
-            radio_pesawat = QRadioButton()
-            # radio_pesawat.setStyleSheet("margin-top:150px")
-            radio_mobil = QRadioButton()
-            # radio_mobil.setStyleSheet("margin-top:150px")
-            radio_bus = QRadioButton()
-            # radio_bus.setStyleSheet("margin-top:150px")
+            radio_kereta = QRadioButton(str(self.listTransportasi[0].getHarga()))
+            radio_kereta.setStyleSheet("color: transparent")
+            radio_pesawat = QRadioButton(str(self.listTransportasi[1].getHarga()))
+            radio_pesawat.setStyleSheet("color: transparent")
+            radio_mobil = QRadioButton(str(self.listTransportasi[2].getHarga()))
+            radio_mobil.setStyleSheet("color: transparent")
+            radio_bus = QRadioButton(str(self.listTransportasi[3].getHarga()))
+            radio_bus.setStyleSheet("color: transparent")
 
             # make a group
             group = QButtonGroup()
@@ -143,14 +119,12 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
             radio_container_layout.addWidget(radio_bus)
 
             radio_container_layout.setContentsMargins(30, 35, 0, 0)
-            # radio_container_layout.setStyleSheet("margin-right: 0")
             radio_container_layout.setSpacing(60)
             right_box_layout.addWidget(radio_container)
 
             # make an image container
             img_container = QLabel()
             img_container.setFixedWidth(100)
-            # img_container.setFixedSize(800, 200)
             img_container.setStyleSheet("margin : 0")
 
             img_pesawat = QLabel()
@@ -180,14 +154,14 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
             label_container_layout.setSpacing(20)
             
             # make a label
-            label_kereta = QLabel("Tiket Kereta Rp. " + str(arrray_of_destiansi[i][1]))
-            label_kereta.setStyleSheet("color: #000000; font-size: 32px; font-weight: bold; margin-bottom : 20px; margin-top : 20px; ")
-            label_pesawat = QLabel("Tiket Pesawat Rp. " + str(arrray_of_destiansi[i][2]))
-            label_pesawat.setStyleSheet("color: #000000; font-size: 32px; font-weight: bold; margin-bottom : 20px; margin-top : 20px; ")
-            label_mobil = QLabel("Tiket Mobil Rp. " + str(arrray_of_destiansi[i][3]))
+            label_mobil = QLabel("Tiket Mobil Rp. " + str(self.listTransportasi[2].getHarga()))
             label_mobil.setStyleSheet("color: #000000; font-size: 32px; font-weight: bold; margin-bottom : 20px; margin-top : 20px; ")
-            label_bus = QLabel("Tiket Bus Rp. " + str(arrray_of_destiansi[i][4]))
+            label_bus = QLabel("Tiket Bus Rp. " + str(self.listTransportasi[3].getHarga()))
             label_bus.setStyleSheet("color: #000000; font-size: 32px; font-weight: bold; margin-bottom : 20px; margin-top : 20px; ")
+            label_kereta = QLabel("Tiket Kereta Rp. " + str(self.listTransportasi[0].getHarga()))
+            label_kereta.setStyleSheet("color: #000000; font-size: 32px; font-weight: bold; margin-bottom : 20px; margin-top : 20px; ")
+            label_pesawat = QLabel("Tiket Pesawat Rp. " + str(self.listTransportasi[1].getHarga()))
+            label_pesawat.setStyleSheet("color: #000000; font-size: 32px; font-weight: bold; margin-bottom : 20px; margin-top : 20px; ")
 
             label_container_layout.addWidget(label_kereta)
             label_container_layout.addWidget(label_pesawat)
@@ -197,14 +171,27 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
             right_box_layout.addWidget(label_container)
             right_box_layout.setSpacing(0)
             right_box_layout.setContentsMargins(0, 0, 0, 0)
-            # right_box_layout.setAlignment(Qt.AlignLeft)
-            # right_box_layout.setAlignment(Qt.AlignCenter)
-            # right_box_layout.setSpacing(0)
             box.addWidget(right_box)
 
             self.gridLayout.addWidget(self.container, i, 0, 1, 1)
 
+    def reset(self):
+        for i in reversed(range(self.gridLayout.count())): 
+            self.gridLayout.itemAt(i).widget().setParent(None)
 
+    def checkedTransportasiHarga(self):
+        checked = []
+        box_arr = self.scrollAreaWidgetContents.findChildren(QRadioButton, '', Qt.FindChildrenRecursively)
+        # get the checked button text
+
+        for i in range(len(box_arr)):
+            if box_arr[i].isChecked():
+                checked.append(((i % 4) + 1,box_arr[i].text()))
+
+        return checked
+
+
+                
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = PerkiraanBiayaTransportasiWindow()

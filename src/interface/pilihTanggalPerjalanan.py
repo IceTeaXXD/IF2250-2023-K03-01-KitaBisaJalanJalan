@@ -40,6 +40,6 @@ class pilihTanggalPerjalananWindow(QDialog):
     def getDateSelected(self):
         # return the selected date in DD/MM/YYYY format
         if self.from_date and self.to_date:
-            return self.from_date.toString("dd/MM/yyyy"), self.to_date.toString("dd/MM/yyyy")
+            return self.from_date.toString("yyyy-MM-dd"), self.to_date.toString("yyyy-MM-dd")
         else:
-            return self.from_date.toString("dd/MM/yyyy"), None
+            return self.from_date.toString("yyyy-MM-dd"), None

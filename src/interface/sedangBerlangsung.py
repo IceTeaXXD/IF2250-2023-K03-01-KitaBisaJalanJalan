@@ -3,7 +3,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
-import image
+
+from classes.BoundaryRiwayat import *
 
 arr_sedang_berlangsung = ['Destinasi 1', 'Destinasi 2', 'Destinasi 3', 'Destinasi 4', 'Destinasi 5', 'Destinasi 6', 'Destinasi 7', 'Destinasi 8', 'Destinasi 9', 'Destinasi 10', 'Destinasi 11', 'Destinasi 12', 'Destinasi 13']
 class sedangBerlangsungWindow(QDialog):

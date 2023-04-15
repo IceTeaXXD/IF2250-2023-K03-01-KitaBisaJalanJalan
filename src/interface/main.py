@@ -14,6 +14,8 @@ from .sedangBerlangsung import *
 from .pilihTanggalPerjalanan import *
 from .image import *
 
+from classes import *
+
 class MainApplication(QApplication):
     def __init__(self, argv):
         super(MainApplication, self).__init__(argv)
@@ -59,6 +61,7 @@ class MainApplication(QApplication):
         self.sedangBerlangsung.back_button.clicked.connect(self.sedangBerlangsung_back_button_clicked)
         self.home.button_riwayat.clicked.connect(self.button_riwayat_clicked)
         self.home.button_sedangberlangsung.clicked.connect(self.sedangberlangsung_clicked)
+        self.riwayatPerjalanan.submit.clicked.connect(self.submit_riwayat_clicked)
 
     def button_baru_clicked(self):
         self.widget.setCurrentWidget(self.pilihDaerah)
@@ -74,7 +77,12 @@ class MainApplication(QApplication):
             msg.exec_()
             return
         self.pilihDestinasi.reset()
-        self.pilihDestinasi.setDaerah(self.pilihDaerah.daerahwisata.getDaerah(self.pilihDaerah.selectedID()).getListDestinasiFromDaerah())
+
+        # get daerah from id
+        daerahpilihan = self.pilihDaerah.daerahwisata.getDaerah(self.pilihDaerah.selectedID())
+        listDestinasi = BoundaryListDestinasi(daerahpilihan.getListDestinasiFromDaerah())
+        self.pilihDestinasi.setDaerah(listDestinasi.getList())
+
         self.widget.setCurrentWidget(self.pilihDestinasi)
 
     def pilihDaerah_back_button_clicked(self):
@@ -84,7 +92,7 @@ class MainApplication(QApplication):
         self.widget.setCurrentWidget(self.pilihDaerah)
 
     def pilihDestinasinext_button_clicked(self):
-        checked = self.pilihDestinasi.getCheckedVal()
+        checked = self.pilihDestinasi.getNameChecked()
         if (len(checked) == 0):
             # error dialog box
             msg = QMessageBox()
@@ -94,6 +102,18 @@ class MainApplication(QApplication):
             msg.setStandardButtons(QMessageBox.Ok)
             msg.exec_()
             return
+        
+        daerahpilihan = self.pilihDaerah.daerahwisata.getDaerah(self.pilihDaerah.selectedID())
+        listDestinasi = BoundaryListDestinasi(daerahpilihan.getListDestinasiFromDaerah())
+        listDestinasiPilihan = BoundaryDestinasiWisata()
+
+        for i in checked:
+            for j in range(len(listDestinasi.getList())):
+                if i == listDestinasi.getList()[j].getNamaDestinasi():
+                    listDestinasiPilihan.addToDestinasiPilihan(listDestinasi.getList()[j])
+
+        self.perkiraanBiayaTransportasi.reset()
+        self.perkiraanBiayaTransportasi.setDestinasi(listDestinasiPilihan.getList())
         self.widget.setCurrentWidget(self.perkiraanBiayaTransportasi)
 
     def perkiraanBiayaTransportasi_back_button_clicked(self):
@@ -126,4 +146,35 @@ class MainApplication(QApplication):
             print(start_date)
         else:
             print(start_date, "to", end_date)
+
+        checked = self.perkiraanBiayaTransportasi.checkedTransportasiHarga()
+
+        listTransportasi = ListTransportasi()
+        transportPilihan = BoundaryListTransportasi()
+
+        for t in checked:
+            transportPilihan.addToPerjalanan(listTransportasi.getTransportasi(t[0]))
+
+        controllerBiaya = ControllerBiayaTransportasi(transportPilihan.getList())
+        biayaTransport = controllerBiaya.hitungBiaya()
+
+        daerahpilihan = self.pilihDaerah.daerahwisata.getDaerah(self.pilihDaerah.selectedID())
+        listDestinasi = BoundaryListDestinasi(daerahpilihan.getListDestinasiFromDaerah())
+        listDestinasiPilihan = BoundaryDestinasiWisata()
+        checked_dest = self.pilihDestinasi.getNameChecked()
+        for i in checked_dest:
+            for j in range(len(listDestinasi.getList())):
+                if i == listDestinasi.getList()[j].getNamaDestinasi():
+                    listDestinasiPilihan.addToDestinasiPilihan(listDestinasi.getList()[j])
+
+        if end_date is None:
+            end_date = start_date
+        add = ControllerPerjalanan(biayaTransport, listDestinasiPilihan.getList(), transportPilihan.getList(), start_date, end_date)
+        add.makePerjalanan()
+    
         self.widget.setCurrentWidget(self.home)
+
+    def submit_riwayat_clicked(self):
+        riwayat = self.riwayatPerjalanan.getRiwayat()
+        self.catatan.setDestinasi(riwayat.get_list_destinasi()[0].getNamaDestinasi())
+        self.widget.setCurrentWidget(self.catatan)
