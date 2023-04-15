@@ -247,7 +247,7 @@ background-color : transparent;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -738,7 +738,7 @@ background-color : transparent;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
+  <widget class="QLabel" name="harga_kereta">
    <property name="geometry">
     <rect>
      <x>830</x>
@@ -759,7 +759,7 @@ background-color : transparent;</string>
     <string>Rp XXX</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="harga_pesawat">
    <property name="geometry">
     <rect>
      <x>830</x>
@@ -780,7 +780,7 @@ background-color : transparent;</string>
     <string>Rp XXX</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_11">
+  <widget class="QLabel" name="harga_bus">
    <property name="geometry">
     <rect>
      <x>830</x>
@@ -801,7 +801,7 @@ background-color : transparent;</string>
     <string>Rp XXX</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_12">
+  <widget class="QLabel" name="harga_mobil">
    <property name="geometry">
     <rect>
      <x>830</x>
@@ -848,8 +848,8 @@ background-color : transparent;</string>
     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:15px; margin-left:29px; margin-right:14px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans,Arial,sans-serif'; font-size:8pt; font-weight:600; color:#000000;&quot;&gt;Lorem Ipsum&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans,Arial,sans-serif'; font-size:8pt; color:#000000;&quot;&gt; is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:15px; margin-left:29px; margin-right:14px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans,Arial,sans-serif'; font-weight:600; color:#000000;&quot;&gt;Lorem Ipsum&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans,Arial,sans-serif'; color:#000000;&quot;&gt; is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_14">
@@ -982,7 +982,7 @@ background-color : transparent;</string>
   <zorder>label_2</zorder>
   <zorder>label_3</zorder>
   <zorder>back_button</zorder>
-  <zorder>label_4</zorder>
+  <zorder>label_10</zorder>
   <zorder>label_5</zorder>
   <zorder>label_6</zorder>
   <zorder>label_7</zorder>
@@ -995,10 +995,10 @@ background-color : transparent;</string>
   <zorder>radioButton_2</zorder>
   <zorder>radioButton_3</zorder>
   <zorder>radioButton_4</zorder>
-  <zorder>label_8</zorder>
-  <zorder>label_10</zorder>
-  <zorder>label_11</zorder>
-  <zorder>label_12</zorder>
+  <zorder>harga_kereta</zorder>
+  <zorder>harga_pesawat</zorder>
+  <zorder>harga_bus</zorder>
+  <zorder>harga_mobil</zorder>
   <zorder>line</zorder>
   <zorder>textBrowser</zorder>
   <zorder>next_button</zorder>
