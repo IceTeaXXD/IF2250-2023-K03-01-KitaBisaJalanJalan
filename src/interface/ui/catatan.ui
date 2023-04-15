@@ -18,7 +18,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{
-background-image: url(&quot;img/catatan/catatan.png&quot;);
+background-image: url(&quot;../img/catatan/catatan.png&quot;);
 background-repeat: none;
 }</string>
   </property>
@@ -75,7 +75,7 @@ background-color: transparent;
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel{
-background-image: url(&quot;img/catatan/calendar.png&quot;);
+background-image: url(&quot;../img/catatan/calendar.png&quot;);
 background-repeat: none;
 }</string>
    </property>
@@ -128,7 +128,7 @@ color: #FFFFFF;
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel{
-background-image:url(&quot;img/catatan/destinasi_box.png&quot;);
+background-image:url(&quot;../img/catatan/destinasi_box.png&quot;);
 background-repeat:none;
 }</string>
    </property>
@@ -179,7 +179,7 @@ text-align: center;
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel{
-background-image:url(&quot;img/catatan/catatan_box.png&quot;);
+background-image:url(&quot;../img/catatan/catatan_box.png&quot;);
 background-repeat:none;
 }</string>
    </property>
