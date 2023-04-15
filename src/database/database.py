@@ -27,6 +27,7 @@ def init_Database():
         `Lokasi_Wisata` TEXT,
         `Lokasi_Koordinat` TEXT,
         `Daerah` INTEGER,
+        `Deskripsi` TEXT,
         PRIMARY KEY(`ID_Wisata`),
         FOREIGN KEY (`Daerah`) REFERENCES daerah(`ID_Daerah`)
         )
@@ -67,7 +68,8 @@ def init_Database():
     create table IF NOT EXISTS transportPilihan(
         `ID_Riwayat` INTEGER,
         `ID_Transportasi` INTEGER,
-        PRIMARY KEY(`ID_Riwayat`, `ID_Transportasi`),
+        `Urutan` INTEGER,
+        PRIMARY KEY(`ID_Riwayat`, `ID_Transportasi`, `Urutan`),
         FOREIGN KEY (`ID_Riwayat`) REFERENCES riwayatperjalanan(`ID_riwayat`),
         FOREIGN KEY (`ID_Transportasi`) REFERENCES transportasi(`ID_Transportasi`)
     )
@@ -82,12 +84,22 @@ def init_Database():
     
     q9 = """
     insert into lokasiwisata values
-    (1, 'Dufan', '10', 1),
-    (2, 'Pantai Ancol', '10', 1),
-    (3, 'PVJ', '10', 2),
-    (4, 'Orchid Forest', 15, 2),
-    (5, 'Pantai Kuta', 30, 3),
-    (6, 'Pura Ulun Danu Brata', 35, 3)
+    (1, 'Dufan', '10', 1, 'Tempat bermain anak'),
+    (2, 'Pantai Ancol', '10', 1, 'Tempat pantai anak'),
+    (3, 'Alexis', '10', 1, 'Tempat PSK'),
+    (4, 'Museum Bank Indonesia', '10', 1, 'Tempat wisata sejarah tentang cuan buat Henry Anand Septian Radityo biar dia jadi direktur BI terus dia uff uff bareng Jason Rivalino terus biar dia juga bisa kita bisa jalan-jalan yang dalam bahasa inggris we can travel'),
+    (5, 'Katedral Jakarta', '10', 1, 'Sok jadi Katolik'),
+    (6, 'PVJ', '10', 2, 'Ini mall gess'),
+    (7, 'Orchid Forest', 15, 2, 'Tempat wisata alam'),
+    (8, 'Paskal 23', 15, 2, 'Macet bet ini tempat'),
+    (9, 'Cihampelas Walk', 15, 2, 'Tempat wisata mall lagi'),
+    (10, 'OJ', 15, 2, 'Ini bar'),
+    (11, 'ITB', 15, 2, 'Tempat wisata kuliah'),
+    (12, 'Pantai Kuta', 30, 3, 'Tempat wisata pantai'),
+    (13, 'Pura Ulun Danu Brata', 35, 3, 'Tempat wisata alam'),
+    (14, 'Pantai Sanur', 40, 3, 'Tempat wisata pantai'),
+    (15, 'Pantai Lovina', 45, 3, 'Pantai Lovina atau Lovina adalah pesisir pantai yang terletak sekitar 9 km sebelah barat kota Singaraja. Daerah ini merupakan salah satu objek wisata yang ada di Bali Utara'),
+    (16, 'Pantai Tanjung Benoa', 50, 3, 'Tanjung Benoa merupakan sebuah kelurahan di Kecamatan Kuta Selatan, Kabupaten Badung, Bali. Siapa sangka sebelum berkembang menjadi kawasan wisata water sport seperti sekarang ini, Tanjung Benoa adalah kampung nelayan dan tempat pemberhentian para pedagang dari Cina.')
     """
 
     q10 = """

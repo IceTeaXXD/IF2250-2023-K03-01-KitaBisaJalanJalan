@@ -28,12 +28,14 @@ class ControllerPerjalanan:
                 c.execute(queryDestinasiPerjalanan, (idRiwayat, str(dest.getID())))
 
         # ke dalam tabel transportasipilihan
+        i = 1
         for tp in self.listTransportasiPilihan:
             queryTransportasiPilihan = """
             insert into transportPilihan values
-            (?,?)"""
+            (?,?,?)"""
             with conn:
-                c.execute(queryTransportasiPilihan, (idRiwayat, tp.getID()))
+                c.execute(queryTransportasiPilihan, (idRiwayat, tp.getID(), i))
+            i+=1
 
         queryCatatan = """
         insert into catatan values
