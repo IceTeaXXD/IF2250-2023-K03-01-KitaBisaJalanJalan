@@ -12,4 +12,3 @@ class pilihDaerahWindow(QDialog):
         daerahwisata = BoundaryDaerahWisata()
         for d in daerahwisata.getListDaerah():
             self.dropdown.addItem(d.getNama(), d.getID())
-        self.show()

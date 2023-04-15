@@ -7,5 +7,4 @@ from PyQt5.QtCore import *
 class sedangBerlangsungWindow(QDialog):
     def __init__(self):
         super(sedangBerlangsungWindow, self).__init__()
-        loadUi("./interface/ui/sedangBerlangsung2.ui", self)
-        self.show()
+        loadUi("./interface/ui/sedangBerlangsung.ui", self)

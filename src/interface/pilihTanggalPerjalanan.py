@@ -8,4 +8,3 @@ class pilihTanggalPerjalananWindow(QDialog):
     def __init__(self):
         super(pilihTanggalPerjalananWindow, self).__init__()
         loadUi("./interface/ui/pilihTanggalPerjalanan.ui", self)
-        self.show()

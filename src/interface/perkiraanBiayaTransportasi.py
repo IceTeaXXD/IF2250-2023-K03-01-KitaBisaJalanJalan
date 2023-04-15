@@ -30,5 +30,3 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
         # Nanti buat tiap object radioButton
         # dicek is set or not
         # kalo is set, pass ID via getID()
-
-        self.show()

@@ -8,4 +8,3 @@ class pilihDestinasiWindow(QDialog):
     def __init__(self):
         super(pilihDestinasiWindow, self).__init__()
         loadUi("./interface/ui/pilihDestinasi.ui", self)
-        self.show()
