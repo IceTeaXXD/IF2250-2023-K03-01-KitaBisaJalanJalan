@@ -10,10 +10,10 @@ class riwayatPerjalananWindow(QDialog):
     def __init__(self):
         super(riwayatPerjalananWindow, self).__init__()
         loadUi("./interface/ui/riwayatPerjalanan.ui", self)
-        self.RiwayatPerjalanan = BoundaryRiwayat()
 
     def getDateSelected(self):
         return self.calendarWidget.selectedDate().toString("yyyy-MM-dd")
     
     def getRiwayat(self):
-        return self.RiwayatPerjalanan.getRiwayat(tgl = self.getDateSelected())
+        riwayat = BoundaryRiwayat()
+        return riwayat.getRiwayat(tgl = self.getDateSelected())

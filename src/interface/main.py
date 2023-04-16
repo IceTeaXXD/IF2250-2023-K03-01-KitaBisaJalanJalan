@@ -63,6 +63,7 @@ class MainApplication(QApplication):
         self.home.button_riwayat.clicked.connect(self.button_riwayat_clicked)
         self.home.button_sedangberlangsung.clicked.connect(self.sedangberlangsung_clicked)
         self.riwayatPerjalanan.submit.clicked.connect(self.submit_riwayat_clicked)
+        self.catatan.submit.clicked.connect(self.submit_catatan_clicked)
 
     def button_baru_clicked(self):
         self.widget.setCurrentWidget(self.pilihDaerah)
@@ -174,5 +175,16 @@ class MainApplication(QApplication):
 
     def submit_riwayat_clicked(self):
         riwayat = self.riwayatPerjalanan.getRiwayat()
-        self.catatan.setDestinasi(riwayat.get_list_destinasi()[0].getNamaDestinasi())
+        self.catatan.setDestinasi(riwayat)
         self.widget.setCurrentWidget(self.catatan)
+
+    def submit_catatan_clicked(self):
+        riwayat = self.riwayatPerjalanan.getRiwayat()
+        listCatatan = []
+        for r in riwayat:
+            listCatatan.append(r.get_id_catatan())
+        text = self.catatan.textEdit.toPlainText()
+        for i in range(len(listCatatan)):
+            catatan = controllerCatatan(listCatatan[i],text)
+            catatan.submitCatatan()
+        self.widget.setCurrentWidget(self.home)

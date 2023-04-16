@@ -26,12 +26,37 @@ class CatatanWindow(QDialog):
         self.verticalLayout.addWidget(self.scrollArea)
         self.setLayout(self.verticalLayout)
 
+    def setDestinasi(self, data):
+        self.textEdit.setText("")
+
+        listDestinasi = []
+        for riwayat in data:
+            list = riwayat.get_list_destinasi()
+            for destinasi in list:
+                listDestinasi.append(destinasi.getNamaDestinasi())
+
+        listKendaraan = []
+        for riwayat in data:
+            list = riwayat.get_list_transportasi()
+            for kendaraan in list:
+                listKendaraan.append(kendaraan.getNama())
+
+        sum = 0
+        for riwayat in data:
+            sum += riwayat.get_biaya_perjalanan()
+
+        # set the text edit to anything in the database
+        catatan = ""
+        for riwayat in data:
+            catatan = riwayat.get_catatan()
+        
+        if catatan != "":
+            self.textEdit.setText(catatan)
 
         # make container for each destinasi
         destinasi = QLabel()
         destinasi.setFixedWidth(400)
         destinasi.setFixedHeight(100)
-        # destinasi.setFixedSize(465, 500)
         destinasi.setStyleSheet("background-color: #03EF62; border-radius: 10px; ")
         destinasi.setAlignment(Qt.AlignTop)
         
@@ -47,8 +72,8 @@ class CatatanWindow(QDialog):
         destinasi_box.addWidget(judul_destinasi)
 
         # define each element in arr destinasi
-        for j in range (len(arr_destinasi)):
-            destinasi_label = QLabel(arr_destinasi[j])
+        for j in range (len(listDestinasi)):
+            destinasi_label = QLabel(listDestinasi[j])
             destinasi_label.setFixedSize(400, 50)
             destinasi_label.setStyleSheet("background-color: #FFFFFF; color: #000000; border-radius: 10px; margin-left : 10px ; margin-right : 10px ; margin-top : 10px ; margin-bottom : 10px ;")
             destinasi_label.setAlignment(Qt.AlignCenter)
@@ -58,9 +83,8 @@ class CatatanWindow(QDialog):
             # get height of destinasi box
             destinasi_box_height = destinasi.height()
             destinasi.setFixedHeight(destinasi_height + destinasi_box_height)
-        # destinasi.setFixedHeight(destinasi_height - destinasi_box_height + 50)
             
-            # make the destinasi label expand horizontally
+        # make the destinasi label expand horizontally
         destinasi.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         # make container for each kendaraan
@@ -83,8 +107,8 @@ class CatatanWindow(QDialog):
         kendaraan_box.addWidget(judul_kendaraan)
         
         # define each element in arr kendaraan
-        for j in range (len(arr_kendaraan)):
-            kendaraan_label = QLabel(arr_kendaraan[j])
+        for j in range (len(listKendaraan)):
+            kendaraan_label = QLabel(listKendaraan[j])
             kendaraan_label.setFixedSize(400, 50)
             kendaraan_label.setStyleSheet("background-color: #FFFFFF; color: #000000; border-radius: 10px; margin-left : 10px ; margin-right : 10px ; margin-top : 10px ; margin-bottom : 10px ;")
             kendaraan_label.setAlignment(Qt.AlignCenter)
@@ -120,7 +144,7 @@ class CatatanWindow(QDialog):
         biaya_box.addWidget(judul_biaya)
 
         # deskripsi biaya
-        biaya_deskripsi = QLabel("Rp XXXXX")
+        biaya_deskripsi = QLabel(f"Rp {sum}")
         biaya_deskripsi.setFixedSize(400, 50)
         biaya_deskripsi.setStyleSheet("background-color: #FFFFFF; color: #000000; border-radius: 10px; margin-left : 10px ; margin-right : 10px ; margin-top : 10px ; margin-bottom : 10px ;")
         biaya_deskripsi.setAlignment(Qt.AlignCenter)
@@ -132,9 +156,6 @@ class CatatanWindow(QDialog):
         self.gridLayout.addWidget(kendaraan, 1, 0, 1, 1)
         # insert below the kendaraan
         self.gridLayout.addWidget(biaya, 2, 0, 1, 1)
-
-    def setDestinasi(self, destinasi):
-        self.destinasi_box.setText(destinasi)
 
 #make main
 if __name__ == "__main__":

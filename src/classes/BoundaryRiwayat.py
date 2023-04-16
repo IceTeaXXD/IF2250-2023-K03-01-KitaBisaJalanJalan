@@ -95,14 +95,13 @@ class BoundaryRiwayat:
 
     def getRiwayat(self, tgl = None, id = None) -> list:
         returnList = []
-        
+
         if(tgl == None and id == None):
-            return self.listRiwayat
+            return self.listRiwayatBerlangsung
         elif (tgl != None):
             for r in self.listRiwayat:
-                if(r.get_tgl_mulai() == tgl):
+                if r.get_tgl_mulai() <= tgl <= r.get_tgl_akhir():
                     returnList.append(r)
-            
             return returnList
         elif(id != None):
             for r in self.listRiwayat:
