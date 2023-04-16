@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
+from datetime import date
 
 from .home import *
 from .catatan import *
@@ -126,6 +127,7 @@ class MainApplication(QApplication):
         self.widget.setCurrentWidget(self.riwayatPerjalanan)
 
     def sedangberlangsung_clicked(self):
+        self.sedangBerlangsung.setSedangBerlangsung(BoundaryRiwayat().getRiwayatBerlangsung(tgl = str(date.today())))
         self.widget.setCurrentWidget(self.sedangBerlangsung)
 
     def sedangBerlangsung_back_button_clicked(self):
@@ -142,10 +144,6 @@ class MainApplication(QApplication):
 
     def submit_clicked(self):
         start_date, end_date = self.pilihTanggalPerjalanan.getDateSelected()
-        if end_date is None:
-            print(start_date)
-        else:
-            print(start_date, "to", end_date)
 
         checked = self.perkiraanBiayaTransportasi.checkedTransportasiHarga()
 

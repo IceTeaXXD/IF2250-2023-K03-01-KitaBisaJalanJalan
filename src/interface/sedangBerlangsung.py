@@ -3,10 +3,11 @@ from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
+from datetime import datetime
 
 from classes.BoundaryRiwayat import *
 
-arr_sedang_berlangsung = ['Destinasi 1', 'Destinasi 2', 'Destinasi 3', 'Destinasi 4', 'Destinasi 5', 'Destinasi 6', 'Destinasi 7', 'Destinasi 8', 'Destinasi 9', 'Destinasi 10', 'Destinasi 11', 'Destinasi 12', 'Destinasi 13']
+# arr_sedang_berlangsung = ['Destinasi 1', 'Destinasi 2', 'Destinasi 3', 'Destinasi 4', 'Destinasi 5', 'Destinasi 6', 'Destinasi 7', 'Destinasi 8', 'Destinasi 9', 'Destinasi 10', 'Destinasi 11', 'Destinasi 12', 'Destinasi 13']
 class sedangBerlangsungWindow(QDialog):
     def __init__(self):
         super(sedangBerlangsungWindow, self).__init__()
@@ -21,7 +22,11 @@ class sedangBerlangsungWindow(QDialog):
         self.verticalLayout.setSpacing(0)
         
         # Add title label
-        title = QLabel('Sebuah tanggal dummy')
+        tanggal = datetime.today().day
+        # bulan -> januari = 1, februari = 2, dst
+        bulan = datetime.today().strftime('%B')
+        tahun = datetime.today().year
+        title = QLabel(str(tanggal) + " " + str(bulan) + " " + str(tahun))
         title.setFixedSize(1132,100)
         title.setStyleSheet("font-size: 35px; font-family: Inter; color: #05192D; font-weight: 600; background-color: #03EF62; border-top-left-radius: 10px; border-top-right-radius: 10px;")
         title.setAlignment(Qt.AlignCenter)
@@ -43,12 +48,16 @@ class sedangBerlangsungWindow(QDialog):
         
         self.setLayout(self.verticalLayout)
 
-
-        ulang = len(arr_sedang_berlangsung)//3
-        if (len(arr_sedang_berlangsung)%3 != 0):
+    def setSedangBerlangsung(self, data):
+        listDestinasi = []
+        for riwayat in data:
+            list = riwayat.get_list_destinasi()
+            for destinasi in list:
+                listDestinasi.append((destinasi.getNamaDestinasi(), destinasi.getDeskripsi()))
+        ulang = len(listDestinasi)//3
+        if (len(listDestinasi)%3 != 0):
             ulang += 1
         i = 0
-        print(len(arr_sedang_berlangsung))
         for row in range(ulang):
             # create a new container for each row
             container = QLabel()
@@ -61,18 +70,15 @@ class sedangBerlangsungWindow(QDialog):
             
             # add elements to the layout
             for j in range(3):
-                if i > len(arr_sedang_berlangsung) - 1:
+                if i > len(listDestinasi) - 1:
                     break
                 element = QLabel()
                 element.setFixedSize(300, 300)
-                # element.setStyleSheet("border: 1px solid #CCCCCC; ")
                 
-                # set background color
-
                 decoration = QLabel()
                 decoration.setFixedSize(300, 20)
                 decoration.setStyleSheet("background-color: #884CFD;")
-                label_destinasi = QLabel(arr_sedang_berlangsung[i])
+                label_destinasi = QLabel(listDestinasi[i][0])
                 label_destinasi.setFixedSize(300, 200)
                 label_destinasi.setStyleSheet("font-size: 20px; font-family: Inter; color: #05192D; font-weight: 600;")
 
@@ -87,8 +93,9 @@ class sedangBerlangsungWindow(QDialog):
                 scroll_area.setFixedHeight(100)
                 scroll_area.setFrameShape(QtWidgets.QFrame.NoFrame)
                 scroll_area.setStyleSheet("background-color: transparent;")
+
                 # make a description label
-                desc = QLabel("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+                desc = QLabel(listDestinasi[i][1])
                 desc.setStyleSheet("font-size: 14px; font-family: Inter; color: #05192D; font-weight: 400; border: 0px;")
                 desc.setWordWrap(True)
                 desc.setMaximumHeight(600)
