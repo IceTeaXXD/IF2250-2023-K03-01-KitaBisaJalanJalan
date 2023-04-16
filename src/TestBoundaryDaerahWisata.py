@@ -1,11 +1,12 @@
 import unittest
 import os
-from ..src.classes.BoundaryDaerahWisata import *
+import sys
+from classes import *
 
 class Test(unittest.TestCase):
     def __init__(self, methodName: str) -> None:
         super().__init__(methodName=methodName)
-        self.listDaerahWisata = BoundaryDaerahWisata.getListDaerah()
+        self.listDaerahWisata = BoundaryDaerahWisata().getListDaerah()
     
     def test_getListDaerah(self):
         self.assertEqual(len(self.listDaerahWisata), 3)
