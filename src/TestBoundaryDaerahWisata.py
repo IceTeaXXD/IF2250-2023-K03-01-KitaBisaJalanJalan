@@ -3,7 +3,7 @@ import os
 import sys
 from classes import *
 
-class Test(unittest.TestCase):
+class TestBoundaryDaerahWisata(unittest.TestCase):
     def __init__(self, methodName: str) -> None:
         super().__init__(methodName=methodName)
         self.listDaerahWisata = BoundaryDaerahWisata().getListDaerah()
