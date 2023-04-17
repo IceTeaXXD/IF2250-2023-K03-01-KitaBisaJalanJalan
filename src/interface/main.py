@@ -4,6 +4,7 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
 
+from .welcome import*
 from .home import *
 from .catatan import *
 from .pilihDaerah import *
@@ -21,6 +22,7 @@ class MainApplication(QApplication):
         super(MainApplication, self).__init__(argv)
 
         # Initialize the windows
+        self.welcome = WelcomeWindow()
         self.home = HomeWindow()
         self.catatan = CatatanWindow()
         self.pilihDaerah = pilihDaerahWindow()
@@ -32,6 +34,7 @@ class MainApplication(QApplication):
         
         # Initialize the widgets for the main window and pages
         self.widget = QtWidgets.QStackedWidget()
+        self.widget.addWidget(self.welcome)
         self.widget.addWidget(self.home)
         self.widget.addWidget(self.catatan)
         self.widget.addWidget(self.pilihDaerah)
@@ -47,6 +50,7 @@ class MainApplication(QApplication):
         self.widget.show()
 
         # Button Handlers
+        self.welcome.next_button.clicked.connect(self.welcome_next_button_clicked)
         self.home.button_baru.clicked.connect(self.button_baru_clicked)
         self.pilihDaerah.back_button.clicked.connect(self.pilihDaerah_back_button_clicked)
         self.pilihDaerah.next_button.clicked.connect(self.pilihDaerah_next_button_clicked)
@@ -62,6 +66,21 @@ class MainApplication(QApplication):
         self.home.button_riwayat.clicked.connect(self.button_riwayat_clicked)
         self.home.button_sedangberlangsung.clicked.connect(self.sedangberlangsung_clicked)
         self.riwayatPerjalanan.submit.clicked.connect(self.submit_riwayat_clicked)
+
+    def welcome_next_button_clicked(self):
+        # get the username from the welcome window
+        username = self.welcome.textEdit.toPlainText()
+        if username == "":
+            # error dialog box
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText("Username Belum Diisi!")
+            msg.setWindowTitle("Error")
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.exec_()
+            return
+        self.pilihDaerah.label_3.setText(f'Halo, {username}! Mau Kemana Kita ?')
+        self.widget.setCurrentWidget(self.home)
 
     def button_baru_clicked(self):
         self.widget.setCurrentWidget(self.pilihDaerah)
