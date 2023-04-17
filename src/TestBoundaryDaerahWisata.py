@@ -18,8 +18,8 @@ class Test(unittest.TestCase):
         self.assertEqual(self.listDaerahWisata[9].getNama(), "Bandung")
     
     def test_printAll(self):
-        self.assertEqual(self.listDaerahWisata[0].print(), "1. Jakarta")
-        self.assertEqual(self.listDaerahWisata[9].print(), "2. Bandung")
+        self.assertEqual((self.listDaerahWisata[0].getID(), "\b. ", self.listDaerahWisata[0].getNama()), (1, "\b. ", "Jakarta"))
+        self.assertEqual((self.listDaerahWisata[1].getID(), "\b. ", self.listDaerahWisata[1].getNama()), (2, "\b. ", "Bandung"))
 
 
 if __name__ == "__main__":
