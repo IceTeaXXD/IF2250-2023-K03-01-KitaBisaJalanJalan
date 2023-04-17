@@ -6,7 +6,7 @@ class BoundaryListDestinasi:
         self.listDestinasi = []
 
         for d in listDestinasi:
-            dest = DestinasiWisata(d[0], d[1], d[2], d[4])
+            dest = DestinasiWisata(d[0], d[1], d[2], d[4], d[5])
             self.listDestinasi.append(dest)
 
     def printAll(self):
