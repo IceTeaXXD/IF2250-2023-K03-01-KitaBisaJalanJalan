@@ -30,26 +30,6 @@ background-repeat:None;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton">
-   <property name="geometry">
-    <rect>
-     <x>1348</x>
-     <y>792</y>
-     <width>121</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-image: url(:/img/pilihDaerah/next.png);
-background-repeat:None;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="autoRaise">
-    <bool>true</bool>
-   </property>
-  </widget>
   <widget class="QLabel" name="name">
    <property name="geometry">
     <rect>
@@ -111,6 +91,58 @@ background-repeat:None;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="next_button">
+   <property name="geometry">
+    <rect>
+     <x>1370</x>
+     <y>750</y>
+     <width>131</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image:url(:/img/pilihDaerah/next.png);
+background-repeat : none;
+background-color : transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="autoRaise">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>459</x>
+     <y>576</y>
+     <width>603</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>30</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTextEdit{
+color: white;
+background-color: rgba(0,0,0,0);
+border:none;
+}</string>
+   </property>
+   <property name="placeholderText">
+    <string>Enter your name...</string>
    </property>
   </widget>
  </widget>
