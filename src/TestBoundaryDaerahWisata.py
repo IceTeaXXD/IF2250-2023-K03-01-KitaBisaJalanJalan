@@ -14,8 +14,8 @@ class Test(unittest.TestCase):
     def test_getDaerah(self):
         self.assertEqual(self.listDaerahWisata[0].getID(), 1)
         self.assertEqual(self.listDaerahWisata[0].getNama(), "Jakarta")
-        self.assertEqual(self.listDaerahWisata[9].getID(), 2)
-        self.assertEqual(self.listDaerahWisata[9].getNama(), "Bandung")
+        self.assertEqual(self.listDaerahWisata[1].getID(), 2)
+        self.assertEqual(self.listDaerahWisata[1].getNama(), "Bandung")
     
     def test_printAll(self):
         self.assertEqual((self.listDaerahWisata[0].getID(), "\b. ", self.listDaerahWisata[0].getNama()), (1, "\b. ", "Jakarta"))
