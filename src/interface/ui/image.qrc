@@ -1,5 +1,8 @@
 <RCC>
   <qresource>
+    <file>../../../img/hello/line.png</file>
+    <file>../../../img/hello/welcome.png</file>
+    <file>../../../img/hello/bg.png</file>
     <file>../../../img/hello/hello.png</file>
     <file>../../../img/pilihDaerah/submit.png</file>
     <file>../../../img/pilihDaerah/submit.png</file>
