@@ -5,7 +5,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
-
+from PyQt5.QtGui import *
 
 class pilihDestinasiWindow(QDialog):
     def __init__(self):
@@ -64,7 +64,7 @@ class pilihDestinasiWindow(QDialog):
             scroll_area.setFrameShape(QtWidgets.QFrame.NoFrame)
             scroll_area.setStyleSheet("background-color: transparent;")
             
-            desc = QLabel(ListDestinasi[i].getDeskripsi())
+            desc = QLabel(ListDestinasi[i].getDeskripsiDestinasi())
             # set font size to 14 with font inter
             desc.setStyleSheet("font-size: 14px; font-family: Inter; color: #000000;")
             # desc.setFixedHeight(100)
@@ -76,11 +76,16 @@ class pilihDestinasiWindow(QDialog):
             desc.setMaximumWidth(300)
             # desc.setFixedSize(300, desc.sizeHint().height())
             scroll_area.setWidget(desc)
+            # placeholder image
+            img = QLabel()
+            img.setPixmap(QPixmap("../img/lokasiWisata/ancol.jpg"))
+            img.setContentsMargins(10, 10, 10, 10)
             # make a layout
             self.layout = QVBoxLayout(self.container)
             self.layout.setContentsMargins(0, 0, 0, 0)
             self.layout.addWidget(decoration)
             self.layout.addWidget(title)
+            self.layout.addWidget(img)
             self.layout.addWidget(line)
             self.layout.addWidget(scroll_area)
             self.layout.addWidget(checkbox)
