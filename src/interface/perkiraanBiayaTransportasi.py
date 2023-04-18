@@ -68,9 +68,15 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
             desc.setContentsMargins(10, 0, 10, 10)
             scroll_area.setWidget(desc)
 
+            # add placeholder image
+            img = QLabel()
+            img.setPixmap(QPixmap("../img/lokasiWisata/ancol.jpg"))
+            img.setContentsMargins(10, 10, 10, 10)
+
             left_box_layout = QVBoxLayout(left_box)
             left_box_layout.addWidget(decoration)
             left_box_layout.addWidget(title)
+            left_box_layout.addWidget(img)
             left_box_layout.addWidget(line)
             left_box_layout.addWidget(scroll_area)
             left_box_layout.setContentsMargins(0, 0, 0, 0)
