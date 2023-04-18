@@ -64,7 +64,7 @@ class pilihDestinasiWindow(QDialog):
             scroll_area.setFrameShape(QtWidgets.QFrame.NoFrame)
             scroll_area.setStyleSheet("background-color: transparent;")
             
-            desc = QLabel(ListDestinasi[i].getDeskripsiDestinasi())
+            desc = QLabel(ListDestinasi[i].getDeskripsi())
             # set font size to 14 with font inter
             desc.setStyleSheet("font-size: 14px; font-family: Inter; color: #000000;")
             # desc.setFixedHeight(100)
@@ -78,7 +78,8 @@ class pilihDestinasiWindow(QDialog):
             scroll_area.setWidget(desc)
             # placeholder image
             img = QLabel()
-            img.setPixmap(QPixmap("../img/lokasiWisata/ancol.jpg"))
+            imgPath = "../img/lokasiWisata/" + ListDestinasi[i].getGambar()
+            img.setPixmap(QPixmap(imgPath))
             img.setContentsMargins(10, 10, 10, 10)
             # make a layout
             self.layout = QVBoxLayout(self.container)
