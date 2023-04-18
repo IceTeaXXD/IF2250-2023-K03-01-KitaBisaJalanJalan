@@ -70,7 +70,8 @@ class PerkiraanBiayaTransportasiWindow(QDialog):
 
             # add placeholder image
             img = QLabel()
-            img.setPixmap(QPixmap("../img/lokasiWisata/ancol.jpg"))
+            path = "../img/lokasiWisata/" + ListDestinasiPilihan[i].getGambar()
+            img.setPixmap(QPixmap(path))
             img.setContentsMargins(10, 10, 10, 10)
 
             left_box_layout = QVBoxLayout(left_box)
