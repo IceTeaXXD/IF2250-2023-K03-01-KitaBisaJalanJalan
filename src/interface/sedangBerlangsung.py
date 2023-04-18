@@ -4,6 +4,7 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
 from datetime import datetime
+from PyQt5.QtGui import *
 
 from classes.BoundaryRiwayat import *
 
@@ -82,6 +83,11 @@ class sedangBerlangsungWindow(QDialog):
                 label_destinasi.setFixedSize(300, 200)
                 label_destinasi.setStyleSheet("font-size: 20px; font-family: Inter; color: #05192D; font-weight: 600;")
 
+                # placeholder image
+                img = QLabel()
+                img.setPixmap(QPixmap("../img/lokasiWisata/ancol.jpg"))
+                img.setContentsMargins(10, 10, 10, 10)
+
                 line = QFrame()
                 line.setFrameShape(QFrame.HLine)
                 line.setFrameShadow(QFrame.Sunken)
@@ -105,6 +111,7 @@ class sedangBerlangsungWindow(QDialog):
                 element_layout = QVBoxLayout(element)
                 element_layout.addWidget(decoration)
                 element_layout.addWidget(label_destinasi)
+                element_layout.addWidget(img)
                 element_layout.addWidget(line)
                 element_layout.addWidget(scroll_area)
                 element_layout.setContentsMargins(0, 0, 0, 0)
