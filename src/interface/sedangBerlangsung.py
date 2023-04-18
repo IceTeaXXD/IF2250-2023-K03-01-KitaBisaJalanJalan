@@ -54,7 +54,7 @@ class sedangBerlangsungWindow(QDialog):
         for riwayat in data:
             list = riwayat.get_list_destinasi()
             for destinasi in list:
-                listDestinasi.append((destinasi.getNamaDestinasi(), destinasi.getDeskripsi()))
+                listDestinasi.append((destinasi.getNamaDestinasi(), destinasi.getDeskripsi(), destinasi.getGambar()))
         ulang = len(listDestinasi)//3
         if (len(listDestinasi)%3 != 0):
             ulang += 1
@@ -85,7 +85,8 @@ class sedangBerlangsungWindow(QDialog):
 
                 # placeholder image
                 img = QLabel()
-                img.setPixmap(QPixmap("../img/lokasiWisata/ancol.jpg"))
+                path = "../img/lokasiWisata/" + listDestinasi[i][2]
+                img.setPixmap(QPixmap(path))
                 img.setContentsMargins(10, 10, 10, 10)
 
                 line = QFrame()
