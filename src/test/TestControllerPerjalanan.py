@@ -13,7 +13,7 @@ class TestControllerPerjalanan(unittest.TestCase):
         c.execute("select * from riwayatperjalanan where tgl_mulai=? and tgl_akhir=? and biaya_perjalanan=?", ('2023-04-25', '2023-04-30', 1055000))
         self.assertEqual(c.fetchone()[2], '2023-04-25')
         self.assertEqual(c.fetchone()[3], '2023-04-30')
-        self.assertEqual(c.fetchone()[4], 1055000)
+        self.assertEqual(c.fetchone()[4], int("1055000"))
         conn.close()
         
 if __name__ == '__main__':

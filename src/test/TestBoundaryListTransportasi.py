@@ -2,7 +2,7 @@ import unittest
 from classes import *
 
 class TestBoundaryListTransportasi(unittest.TestCase):
-    def __init__(self, methodName: str) -> None:
+    def __init__(self, methodName = "runTest") -> None:
         super().__init__(methodName=methodName)
         self.listTransportasiPilihan = BoundaryListTransportasi().getList()
     
