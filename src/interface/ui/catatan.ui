@@ -44,7 +44,7 @@ background-color: transparent;
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../../img/catatan/backbutton.png</normaloff>../../../img/catatan/backbutton.png</iconset>
+     <normaloff>../../../../../../../../Users/img/catatan/backbutton.png</normaloff>../../../../../../../../Users/img/catatan/backbutton.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -224,7 +224,7 @@ text-align: center;
 }</string>
    </property>
    <property name="text">
-    <string>Destinasi X</string>
+    <string>Catatan Ku...</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
