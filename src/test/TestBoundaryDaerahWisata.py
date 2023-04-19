@@ -12,10 +12,12 @@ class TestBoundaryDaerahWisata(unittest.TestCase):
         self.assertEqual(len(self.listDaerahWisata), 3)
 
     def test_getDaerah(self):
-        self.assertEqual(self.listDaerahWisata[0].getID(), 1)
-        self.assertEqual(self.listDaerahWisata[0].getNama(), "Jakarta")
-        self.assertEqual(self.listDaerahWisata[1].getID(), 2)
-        self.assertEqual(self.listDaerahWisata[1].getNama(), "Bandung")
+        self.assertEqual(BoundaryDaerahWisata().getDaerah(1).getID(), 1)
+        self.assertEqual(BoundaryDaerahWisata().getDaerah(1).getNama(), "Jakarta")
+        self.assertEqual(BoundaryDaerahWisata().getDaerah(2).getID(), 2)
+        self.assertEqual(BoundaryDaerahWisata().getDaerah(2).getNama(), "Bandung")
+        self.assertEqual(BoundaryDaerahWisata().getDaerah(3).getID(), 3)
+        self.assertEqual(BoundaryDaerahWisata().getDaerah(3).getNama(), "Bali")
     
     def test_printAll(self):
         self.assertEqual((self.listDaerahWisata[0].getID(), "\b. ", self.listDaerahWisata[0].getNama()), (1, "\b. ", "Jakarta"))
