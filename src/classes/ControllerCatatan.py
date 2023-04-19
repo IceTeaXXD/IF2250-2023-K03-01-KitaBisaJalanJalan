@@ -18,6 +18,6 @@ class controllerCatatan:
     def getCatatan(self):
         conn = sqlite3.connect('./database/kitabisajalan.db')
         c = conn.cursor()
-        query = """select * from catatan where id = :id"""
+        query = """select * from catatan where ID_Catatan = :id"""
         c.execute(query, {'id': self.id})
         return c.fetchall()
