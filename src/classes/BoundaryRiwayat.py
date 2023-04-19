@@ -69,7 +69,7 @@ class BoundaryRiwayat:
                 listTransport.append(metodeTransportasi(t[0], t[1], t[2]))
             
             q2 = """
-            select ID_Destinasi, Lokasi_Wisata, Daerah, Deskripsi
+            select ID_Destinasi, Lokasi_Wisata, Daerah, Deskripsi, Gambar
             from destinasiPerjalanan inner join lokasiwisata on ID_Destinasi = ID_Wisata
             where ID_Perjalanan = ?
             """
@@ -78,7 +78,7 @@ class BoundaryRiwayat:
             destinasi = c.fetchall()
 
             for d in destinasi:
-                listDestinasi.append(DestinasiWisata(d[0], d[1], d[2], d[3]))
+                listDestinasi.append(DestinasiWisata(d[0], d[1], d[2], d[3], d[4]))
 
             q3 = """
             select isi 

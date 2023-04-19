@@ -26,8 +26,41 @@ class CatatanWindow(QDialog):
         self.verticalLayout.addWidget(self.scrollArea)
         self.setLayout(self.verticalLayout)
 
-    def setDestinasi(self, data):
+    def setDestinasi(self, data, tgl):
         self.textEdit.setText("")
+
+        # Parse tanggal
+        parseDate = tgl.split("-")
+        
+        # Angka -> Bulan
+        if(parseDate[1] == "01"):
+            parseDate[1] = "JAN"
+        elif(parseDate[1] == "02"):
+            parseDate[1] = "FEB"
+        elif(parseDate[1] == "03"):
+            parseDate[1] = "MAR"
+        elif(parseDate[1] == "04"):
+            parseDate[1] = "APR"
+        elif(parseDate[1] == "05"):
+            parseDate[1] = "MEI"
+        elif(parseDate[1] == "06"):
+            parseDate[1] = "JUN"
+        elif(parseDate[1] == "07"):
+            parseDate[1] = "JUL"
+        elif(parseDate[1] == "08"):
+            parseDate[1] = "AGT"
+        elif(parseDate[1] == "09"):
+            parseDate[1] = "SEP"
+        elif(parseDate[1] == "10"):
+            parseDate[1] = "OKT"
+        elif(parseDate[1] == "11"):
+            parseDate[1] = "NOV"
+        else:
+            parseDate[1] = "DES"
+ 
+        # Set Bulan dan Tanggal
+        self.Bulan.setText(parseDate[1])
+        self.Tanggal.setText(parseDate[2])
 
         listDestinasi = []
         for riwayat in data:
