@@ -3,7 +3,9 @@ from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import *
+from datetime import date
 
+from .welcome import*
 from .home import *
 from .catatan import *
 from .pilihDaerah import *
@@ -21,6 +23,7 @@ class MainApplication(QApplication):
         super(MainApplication, self).__init__(argv)
 
         # Initialize the windows
+        self.welcome = WelcomeWindow()
         self.home = HomeWindow()
         self.catatan = CatatanWindow()
         self.pilihDaerah = pilihDaerahWindow()
@@ -32,6 +35,7 @@ class MainApplication(QApplication):
         
         # Initialize the widgets for the main window and pages
         self.widget = QtWidgets.QStackedWidget()
+        self.widget.addWidget(self.welcome)
         self.widget.addWidget(self.home)
         self.widget.addWidget(self.catatan)
         self.widget.addWidget(self.pilihDaerah)
@@ -47,6 +51,7 @@ class MainApplication(QApplication):
         self.widget.show()
 
         # Button Handlers
+        self.welcome.next_button.clicked.connect(self.welcome_next_button_clicked)
         self.home.button_baru.clicked.connect(self.button_baru_clicked)
         self.pilihDaerah.back_button.clicked.connect(self.pilihDaerah_back_button_clicked)
         self.pilihDaerah.next_button.clicked.connect(self.pilihDaerah_next_button_clicked)
@@ -62,6 +67,22 @@ class MainApplication(QApplication):
         self.home.button_riwayat.clicked.connect(self.button_riwayat_clicked)
         self.home.button_sedangberlangsung.clicked.connect(self.sedangberlangsung_clicked)
         self.riwayatPerjalanan.submit.clicked.connect(self.submit_riwayat_clicked)
+        self.catatan.submit.clicked.connect(self.submit_catatan_clicked)
+
+    def welcome_next_button_clicked(self):
+        # get the username from the welcome window
+        username = self.welcome.textEdit.toPlainText()
+        if username == "":
+            # error dialog box
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText("Username Belum Diisi!")
+            msg.setWindowTitle("Error")
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.exec_()
+            return
+        self.pilihDaerah.label_3.setText(f'Halo, {username}! Mau Kemana Kita ?')
+        self.widget.setCurrentWidget(self.home)
 
     def button_baru_clicked(self):
         self.widget.setCurrentWidget(self.pilihDaerah)
@@ -126,6 +147,7 @@ class MainApplication(QApplication):
         self.widget.setCurrentWidget(self.riwayatPerjalanan)
 
     def sedangberlangsung_clicked(self):
+        self.sedangBerlangsung.setSedangBerlangsung(BoundaryRiwayat().getRiwayatBerlangsung(tgl = str(date.today())))
         self.widget.setCurrentWidget(self.sedangBerlangsung)
 
     def sedangBerlangsung_back_button_clicked(self):
@@ -142,10 +164,6 @@ class MainApplication(QApplication):
 
     def submit_clicked(self):
         start_date, end_date = self.pilihTanggalPerjalanan.getDateSelected()
-        if end_date is None:
-            print(start_date)
-        else:
-            print(start_date, "to", end_date)
 
         checked = self.perkiraanBiayaTransportasi.checkedTransportasiHarga()
 
@@ -176,5 +194,16 @@ class MainApplication(QApplication):
 
     def submit_riwayat_clicked(self):
         riwayat = self.riwayatPerjalanan.getRiwayat()
-        self.catatan.setDestinasi(riwayat.get_list_destinasi()[0].getNamaDestinasi())
+        self.catatan.setDestinasi(riwayat, self.riwayatPerjalanan.selectDate)
         self.widget.setCurrentWidget(self.catatan)
+
+    def submit_catatan_clicked(self):
+        riwayat = self.riwayatPerjalanan.getRiwayat()
+        listCatatan = []
+        for r in riwayat:
+            listCatatan.append(r.get_id_catatan())
+        text = self.catatan.textEdit.toPlainText()
+        for i in range(len(listCatatan)):
+            catatan = controllerCatatan(listCatatan[i],text)
+            catatan.submitCatatan()
+        self.widget.setCurrentWidget(self.home)

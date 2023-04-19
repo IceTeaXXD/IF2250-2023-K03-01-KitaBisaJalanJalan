@@ -29,7 +29,7 @@ class BoundaryRiwayat:
                 listTransport.append(metodeTransportasi(t[0], t[1], t[2]))
             
             q2 = """
-            select ID_Destinasi, Lokasi_Wisata, Daerah, Deskripsi
+            select ID_Destinasi, Lokasi_Wisata, Daerah, Deskripsi, Gambar
             from destinasiPerjalanan inner join lokasiwisata on ID_Destinasi = ID_Wisata
             where ID_Perjalanan = ?
             """
@@ -38,7 +38,7 @@ class BoundaryRiwayat:
             destinasi = c.fetchall()
 
             for d in destinasi:
-                listDestinasi.append(DestinasiWisata(d[0], d[1], d[2], d[3]))
+                listDestinasi.append(DestinasiWisata(d[0], d[1], d[2], d[3], d[4]))
 
             q3 = """
             select isi 
@@ -69,7 +69,7 @@ class BoundaryRiwayat:
                 listTransport.append(metodeTransportasi(t[0], t[1], t[2]))
             
             q2 = """
-            select ID_Destinasi, Lokasi_Wisata, Daerah
+            select ID_Destinasi, Lokasi_Wisata, Daerah, Deskripsi, Gambar
             from destinasiPerjalanan inner join lokasiwisata on ID_Destinasi = ID_Wisata
             where ID_Perjalanan = ?
             """
@@ -78,7 +78,7 @@ class BoundaryRiwayat:
             destinasi = c.fetchall()
 
             for d in destinasi:
-                listDestinasi.append(DestinasiWisata(d[0], d[1], d[2]))
+                listDestinasi.append(DestinasiWisata(d[0], d[1], d[2], d[3], d[4]))
 
             q3 = """
             select isi 
@@ -93,34 +93,36 @@ class BoundaryRiwayat:
         
         conn.close()
 
-    def getRiwayat(self, tgl = None, id = None):
-        if(tgl == None and id == None):
-            return self.listRiwayat
-        elif (tgl != None):
-            for r in self.listRiwayat:
-                if(r.get_tgl_mulai() == tgl):
-                    return r
-            
-            return 0
-        elif(id != None):
-            for r in self.listRiwayat:
-                if(r.get_id_riwayat() == id):
-                    return r
-            
-            return 0
-        
-    def getRiwayatBerlangsung(self, tgl = None, id = None):
+    def getRiwayat(self, tgl = None, id = None) -> list:
+        returnList = []
+
         if(tgl == None and id == None):
             return self.listRiwayatBerlangsung
         elif (tgl != None):
             for r in self.listRiwayat:
-                if(r.get_tgl_mulai() == tgl):
-                    return r
-            
-            return 0
+                if r.get_tgl_mulai() <= tgl <= r.get_tgl_akhir():
+                    returnList.append(r)
+            return returnList
         elif(id != None):
             for r in self.listRiwayat:
                 if(r.get_id_riwayat() == id):
-                    return r
+                    returnList.append(r)
             
-            return 0
+            return returnList
+        
+    def getRiwayatBerlangsung(self, tgl = None, id = None) -> list:
+        returnList = []
+
+        if(tgl == None and id == None):
+            return self.listRiwayatBerlangsung
+        elif (tgl != None):
+            for r in self.listRiwayat:
+                if r.get_tgl_mulai() <= tgl <= r.get_tgl_akhir():
+                    returnList.append(r)
+            return returnList
+        elif(id != None):
+            for r in self.listRiwayat:
+                if(r.get_id_riwayat() == id):
+                    returnList.append(r)
+            
+            return returnList
