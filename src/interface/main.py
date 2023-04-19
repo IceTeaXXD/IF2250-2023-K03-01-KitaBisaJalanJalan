@@ -194,7 +194,7 @@ class MainApplication(QApplication):
 
     def submit_riwayat_clicked(self):
         riwayat = self.riwayatPerjalanan.getRiwayat()
-        self.catatan.setDestinasi(riwayat)
+        self.catatan.setDestinasi(riwayat, self.riwayatPerjalanan.selectDate)
         self.widget.setCurrentWidget(self.catatan)
 
     def submit_catatan_clicked(self):
